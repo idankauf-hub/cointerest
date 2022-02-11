@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 let val;
 
@@ -47,7 +48,7 @@ const HomePage = ({ route, navigation }) => {
     try {
       //const jsonValue = await AsyncStorage.getItem('@loggedInUser')
       const jsonVal = await AsyncStorage.getItem("loggedInUserEmail");
-      console.log("Home Page ", jsonVal);
+      console.log("Home Page ", jsonVal["Username"]);
       //return jsonValue != null ? await JSON.parse(jsonValue) : null;
       //return  jsonVal;
       setUser(await AsyncStorage.getItem("loggedInUserEmail"));
@@ -63,9 +64,18 @@ const HomePage = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text onPress={getData}>Hello World</Text>
-        <Text>This is HomePage</Text>
+      <View style={styles.header}>
+      <View style={styles.welcome}>
+      <Text onPress={getData} style={{color:"#A7A7A7",fontWeight:'bold',fontSize:20}}>Welcome,</Text>
+      <Text onPress={getData} style={styles.text}>idan the king</Text>
+      </View>
+      <View style={styles.profileIcon}>
+      <MaterialCommunityIcons
+                name="camera-plus-outline"
+                color={"white"}
+                size={30}
+              />
+      </View>
       </View>
     </SafeAreaView>
   );
@@ -75,17 +85,36 @@ export default HomePage;
 
 const styles = StyleSheet.create({
   container: {
-    //flexDirection:'row',
-    //paddingTop:30,
-    //backgroundColor: '#1A1A1A',
+    flexDirection: "column",
     flex: 1,
-    alignItems: "center",
+    backgroundColor: '#1A1A1A'
+  },
+  header: {
+    height:80,
+    marginTop: 60,
+    flexDirection: "row",
+  },
+  text:{
+    
+    color:"white",
+    fontWeight:'bold',
+    fontSize:20
+  },
+  welcome:{
+    justifyContent:"flex-start",
+    left:20,
+    flexDirection: "column",
+  },
+  profileIcon:{
+    flexDirection: "column",
+    marginLeft:180,
+    width: 60,
+    height: 60,
     justifyContent: "center",
-
-    /*
-        marginTop: 0,
-        flex: 1,
-        backgroundColor: '#1A1A1A'
-        */
+    alignItems: "center",
+    borderRadius: 100,
+    backgroundColor: "black",
+    borderColor: "white",
+    borderWidth: 1.5,
   },
 });

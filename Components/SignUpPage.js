@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import * as Animatable from "react-native-animatable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// add email to the async storage
 const storeData = async (value) => {
   try {
     await AsyncStorage.setItem('loggedInUserEmail', value)
