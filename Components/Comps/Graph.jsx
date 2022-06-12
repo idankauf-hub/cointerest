@@ -64,7 +64,6 @@ const Graph = (props) => {
   const [pred, setPred] = useState();
 
   const selectPrevDate_1 = () => {
-
     let day = preferDate(1)
     setSelectedDate(day)
     setIntervals("H")
@@ -249,7 +248,10 @@ export default Graph;
 const styles = StyleSheet.create({
   filterDate: {
     flexDirection: 'row',
-    marginLeft: 20,
+    textAlign:"center",
+    justifyContent:'center'
+
+
   },
   button: {
     backgroundColor: "#6136DA",
